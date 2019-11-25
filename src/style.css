@@ -1,13 +1,61 @@
 * {
   font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
 }
 
-.header h1 {
+.word_spacing {
+  line-height: 120%;
+  font-size: 14px;
+}
+
+.header div {
   width: 95%;
   margin: auto;
   padding: 30px;
+  /* border: 2px solid red; */
 }
 .container {
+  padding: 0 30px;
   width: 95%;
+  margin: auto;
+}
+
+.home_container {
+  display: flex;
+}
+
+.search_gif_container {
+  width: 60%;
+  border: 2px solid red;
+}
+
+.liked_container {
+  width: 40%;
+  border:2px solid blue;
+}
+
+.search_input {
+  padding: 10px;
+  font-size: 15px;
+  height: 40px;
+  width: 250px;
+}
+
+.submit_btn {
+  height: 40px;
+  padding: 10px;
+  width: 100px;
+  border: 2px solid dodgerblue;
+  color: dodgerblue;
+  font-size: 15px;
+}
+
+.result {
+  margin-top: 20px;
+  height: 300px;
+  border: 1px solid #ddd;
+}
+
+.slider_container {
   margin: auto;
 }

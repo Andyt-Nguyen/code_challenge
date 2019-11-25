@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default () => (
+export default ({ title }) => (
   <header className="header">
     <div>
-      <h1>Wierdness Calcuator</h1>
+      <h1>{title}</h1>
     </div>
   </header>
 )
