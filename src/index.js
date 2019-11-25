@@ -5,6 +5,8 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
 import Routes from './components/Routes';
+import './reset.css';
+import './style.css';
 
 const store = createStore(reducers, applyMiddleware(thunk));
 ReactDOM.render(
