@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, ImageIconList, Button } from '../common';
+import { ImageIconList, Button } from '../common';
 import requireGifs from '../common/hoc/requireGifs';
 
 const ResultPage = (props) => {

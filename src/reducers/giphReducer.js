@@ -12,7 +12,7 @@ import {
 const INITIAL_STATE = {
   searchTerm: '',
   slideVal: 0,
-  currGif: {}, // GIF_OBJECT from api
+  currGif: [], // GIF_OBJECT from api
   likedGifs: [], // { name: 'Name of gif', url: 'URL', weirdVal: INT }
   errorMsg: ''
 };
@@ -26,7 +26,7 @@ export default (state=INITIAL_STATE, action) => {
       return { ...state, slideVal: action.payload };
 
     case FETCH_GIPH:
-      return { ...state, currGif: action.payload };
+      return { ...state, errorMsg: '', currGif: action.payload };
 
     case CLEAR_GIPH:
       return { ...state, currGif: {} };
@@ -37,10 +37,10 @@ export default (state=INITIAL_STATE, action) => {
 
     case UNLIKE_GIPH:
       const filterGif = state.likedGifs.filter(a => a.name !== action.payload);
-      return { ...state, likedGifs: filterGif };
+      return { ...state, currGif: {}, likedGifs: filterGif };
 
     case ERROR_GIPH:
-      return { ...state, errorMsg: action.payload };
+      return { ...state, currGif: {}, errorMsg: action.payload };
 
     case RESTART_GIPH:
       return { ...INITIAL_STATE };

@@ -32,6 +32,10 @@ const styles = {
       color: '#00aeef',
       fontSize: 100,
       marginTop: 30
+    },
+    error: {
+      color: 'crimson',
+      marginTop: 10
     }
 }
 
@@ -48,6 +52,7 @@ const HomePage = (props) => {
     e.preventDefault();
     setSlider(0);
     await props.fetchGiph(0, props.giph.searchTerm);
+    setIsLiked(false);
   };
 
   const onSliderChange = async (e) => {
@@ -109,10 +114,10 @@ const HomePage = (props) => {
             onSubmit={onSubmit}
             inputValue={props.giph.searchTerm}
           />
-          { isLiked && <p style={{color:'red'}}>You haved already like this search term. Please search for another gif.</p>}
+          { isLiked && <p style={styles.error}>You haved already like this search term. Please search for another gif.</p>}
 
-
-          { 
+          <p style={styles.error}>{ props.giph.errorMsg }</p>
+          {
             Object.values(props.giph.currGif).length > 0 &&
             <Card title="Your result">
               <ColumnCenter>
