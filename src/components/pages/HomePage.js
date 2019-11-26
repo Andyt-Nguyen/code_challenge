@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { FaThumbsUp, FaTrash } from "react-icons/fa";
-import { IoMdCheckmarkCircleOutline } from 'react-icons/io'
+import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
+import { 
+  onSearchChange,
+  fetchGiph,
+  likeGiph,
+  unLikeGiph,
+  clearGiph 
+} from '../../actions';
+
 import { 
   Container, 
   SearchForm, 
@@ -15,13 +23,7 @@ import {
   Modal 
 } from '../common';
 
-import { 
-  onSearchChange,
-  fetchGiph,
-  likeGiph,
-  unLikeGiph,
-  clearGiph 
-} from '../../actions';
+import { MAX_LIKES } from '../../utils/constants';
 
 const styles = {
     btnContainer: { 
@@ -41,6 +43,13 @@ const styles = {
       textAlign: 'center', 
       color:'dodgerblue', 
       marginTop: 10
+    },
+    spacer: {
+      marginTop: 20
+    },
+    imageStyle: {
+      width: 150, 
+      height: 150
     }
 }
 
@@ -55,7 +64,7 @@ const HomePage = (props) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if(props.giph.likedGifs.length >= 5) return;
+    if(props.giph.likedGifs.length >= MAX_LIKES) return;
     setSlider(0);
     await props.fetchGiph(0, props.giph.searchTerm);
     setIsLiked(false);
@@ -107,13 +116,13 @@ const HomePage = (props) => {
             Lorem ipsum dolor amet chia franzen portland poutine kogi tousled vegan adaptogen umami yuccie four loko air plant cray VHS cred. Fashion axe kinfolk dreamcatcher pop-up semiotics food truck hot chicken knausgaard bespoke asymmetrical master cleanse before they sold out polaroid enamel pin.
           </Description>
 
-          <div style={{ marginTop: 20 }} />
+          <div style={styles.spacer} />
 
           <Description>
             Lorem ipsum dolor amet chia franzen portland poutine kogi tousled vegan adaptogen umami yuccie four loko air plant cray VHS cred. Fashion axe kinfolk dreamcatcher
           </Description>
 
-          <div style={{ marginTop: 20 }} />
+          <div style={styles.spacer} />
           
           <SearchForm
             onChange={onInputChange}
@@ -121,7 +130,7 @@ const HomePage = (props) => {
             inputValue={props.giph.searchTerm}
           />
 
-          { props.giph.likedGifs.length >= 5 && <p style={styles.error}>Your likes have been maxed out</p>}
+          { props.giph.likedGifs.length >= MAX_LIKES && <p style={styles.error}>Your likes have been maxed out</p>}
           { isLiked && <p style={styles.error}>You haved already like this search term. Please search for another gif.</p>}
 
           <p style={styles.error}>{ props.giph.errorMsg }</p>
@@ -149,20 +158,23 @@ const HomePage = (props) => {
             data={props.giph.likedGifs} 
             onClick={onDelete}
             Icon={<FaTrash style={{ color: 'crimson'}} />}
-            imageStyles={{width: 150, height: 150}}
+            imageStyles={styles.imageStyle}
           />
 
           { 
-            props.giph.likedGifs.length < 5 &&
+            props.giph.likedGifs.length < MAX_LIKES &&
             <p style={styles.pStyle}>
-              You need {5 - props.giph.likedGifs.length} more likes to find out your wierdness
+              You need {MAX_LIKES - props.giph.likedGifs.length} more likes to find out your wierdness
             </p>
           }
           
           {
-            props.giph.likedGifs.length > 4 && 
+            props.giph.likedGifs.length >= MAX_LIKES && 
             <div style={styles.btnContainer}>
-              <Button onClick={() => props.history.push('/result')} style={{width: '100%'}}>
+              <Button 
+                style={{width: '100%'}} 
+                onClick={() => props.history.push('/result')}
+              >
                 Calculate My Weirdness Score
               </Button>
             </div>

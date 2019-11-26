@@ -1,13 +1,21 @@
 import React from 'react';
 import { ImageIconList, Button } from '../common';
 import requireGifs from '../common/hoc/requireGifs';
+import { MAX_AMOUNT } from '../../utils/constants';
+
+const styles = {
+  btnStyle: {
+    width: 200,
+    padding: 10
+  }
+};
 
 const ResultPage = (props) => {
   const calcAvg = (
     props.giph.likedGifs.reduce((initial, obj) => initial + obj.weirdVal, 0) / 
-    (props.giph.likedGifs.length * 10)
+    (props.giph.likedGifs.length * MAX_AMOUNT)
   );
-  const roundUp = Math.round(calcAvg * 10);
+  const roundUp = Math.round(calcAvg * MAX_AMOUNT);
 
   const startOver = () => {
     props.resetGiph();
@@ -17,7 +25,7 @@ const ResultPage = (props) => {
   return (
     <div>
       <div style={{ display:'flex', justifyContent:'center', marginBottom: 40}}>
-      <h3>You scored {roundUp}/10</h3>
+      <h3>You scored {roundUp}/{MAX_AMOUNT}</h3>
       </div>
 
       <ImageIconList
@@ -27,16 +35,13 @@ const ResultPage = (props) => {
       />
 
       <div style={{ display:'flex', justifyContent:'center'}}>
-        <Button 
-          style={{ width: 200, padding: 10}}
-          onClick={startOver}
-        >
+        <Button style={styles.btnStyle} onClick={startOver}>
           Start Over
         </Button>
       </div>
 
     </div>
   )
-}
+};
 
 export default requireGifs(ResultPage);
