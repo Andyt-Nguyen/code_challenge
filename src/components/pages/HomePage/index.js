@@ -51,8 +51,9 @@ const HomePage = (props) => {
   };
 
   const onSliderChange = async (e) => {
-    setSlider(e.target.value);
-    await props.fetchGiph(e.target.value, props.giph.searchTerm);
+    const val = parseInt(e.target.value)
+    setSlider(val);
+    await props.fetchGiph(val, props.giph.searchTerm);
   };
 
   const onLike = () => {

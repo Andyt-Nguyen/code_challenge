@@ -12,8 +12,8 @@ import {
 const INITIAL_STATE = {
   searchTerm: '',
   slideVal: 0,
-  currGif: {}, // GIF_OBJECT
-  likedGifs: [], // { name: 'Name of gif', url: 'URL', weird: INT }
+  currGif: {}, // GIF_OBJECT from api
+  likedGifs: [], // { name: 'Name of gif', url: 'URL', weirdVal: INT }
   errorMsg: ''
 };
 
@@ -27,6 +27,7 @@ export default (state=INITIAL_STATE, action) => {
 
     case FETCH_GIPH:
       return { ...state, currGif: action.payload };
+
     case CLEAR_GIPH:
       return { ...state, currGif: {} };
       

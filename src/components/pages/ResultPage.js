@@ -4,7 +4,7 @@ import requireGifs from '../common/hoc/requireGifs';
 
 const ResultPage = (props) => {
   const calcAvg = (
-    props.giph.likedGifs.reduce((initial, obj) => initial + obj.weird, 0) / 
+    props.giph.likedGifs.reduce((initial, obj) => initial + obj.weirdVal, 0) / 
     (props.giph.likedGifs.length * 10)
   );
   const roundUp = Math.round(calcAvg * 10);

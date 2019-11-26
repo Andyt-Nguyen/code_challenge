@@ -30,13 +30,9 @@ export const clearGiph = () => {
 
 export const fetchGiph = (num, searchTerm) => async (dispatch) => {
   try {
-    console.log(num, searchTerm)
     const res = await giphyApi.getWeirdGiph(num, searchTerm);
-    console.log('DATA',res.data);
-
     dispatch({ type: FETCH_GIPH, payload: res.data });
   } catch(e) {
-    console.log(e);
     return dispatch({ type: ERROR_GIPH, payload: 'There was a problem fetching a giph :('});
   }
 };
