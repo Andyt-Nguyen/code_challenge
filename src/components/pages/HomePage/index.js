@@ -38,19 +38,20 @@ const HomePage = (props) => {
 
           {
             Object.values(props.giph.currGif).length > 0 &&
-            <Result title={props.giph.currGif.data.title} url={props.giph.currGif.data.images.original.url} />
+            <>
+              <Result title={props.giph.currGif.data.title} url={props.giph.currGif.data.images.original.url} />
+              <input
+                min="0"
+                max="10"
+                type="range"
+                style={{ width: '100%' }}
+                className="slider"
+                onChange={onSliderChange}
+                value={sliderVal}
+              />
+            </>
           }
           
-
-          <input
-            min="0"
-            max="10"
-            type="range"
-            style={{ width: '100%' }}
-            className="slider"
-            onChange={onSliderChange}
-            value={sliderVal}
-          />
           
         </aside>
 

@@ -12,7 +12,6 @@
   width: 95%;
   margin: auto;
   padding: 30px;
-  /* border: 2px solid red; */
 }
 .container {
   padding: 0 30px;
@@ -52,10 +51,14 @@
 
 .result {
   margin-top: 20px;
-  height: 300px;
-  border: 1px solid #ddd;
 }
 
 .slider_container {
   margin: auto;
+}
+
+.btn {
+  width: 100px;
+  padding: 5px;
+  border: 2px solid dodgerblue;
 }
