@@ -5,7 +5,8 @@ import {
   UNLIKE_GIPH,
   ERROR_GIPH,
   RESTART_GIPH,
-  SLIDER_CHANGE
+  SLIDER_CHANGE,
+  CLEAR_GIPH
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -27,7 +28,9 @@ export default (state=INITIAL_STATE, action) => {
     case FETCH_GIPH:
       console.log(action.payload)
       return { ...state, currGif: action.payload };
-
+    case CLEAR_GIPH:
+      return { ...state, currGif: {} };
+      
     case LIKE_GIPH:
       const likedGifs = [...state.likedGifs, action.payload];
       return { ...state, errorMsg: '', likedGifs };

@@ -1,7 +1,19 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Container, SearchForm, Description, Card, ColumnCenter, ImageText, Button, Slider, ImageIconList, Modal } from '../../common';
-import { onSearchChange, fetchGiph, likeGiph, unLikeGiph } from '../../../actions';
+import { 
+  Container, 
+  SearchForm, 
+  Description, 
+  Card, 
+  ColumnCenter, 
+  ImageText, 
+  Button, 
+  Slider, 
+  ImageIconList, 
+  Modal 
+} from '../../common';
+
+import { onSearchChange, fetchGiph, likeGiph, unLikeGiph, clearGiph } from '../../../actions';
 import { FaThumbsUp, FaTrash } from "react-icons/fa";
 import {IoMdCheckmarkCircleOutline} from 'react-icons/io'
 const styles = {
@@ -22,19 +34,18 @@ const HomePage = (props) => {
 
   const onInputChange = (e) => {
     props.onSearchChange(e.target.value);
-  }
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
     setSlider(0);
     await props.fetchGiph(0, props.giph.searchTerm);
-
-  }
+  };
 
   const onSliderChange = async (e) => {
     setSlider(e.target.value);
     await props.fetchGiph(e.target.value, props.giph.searchTerm);
-  }
+  };
 
   const onLike = () => {
     const gifObj = {
@@ -44,20 +55,24 @@ const HomePage = (props) => {
     }
     props.likeGiph(gifObj);
     setVisible(true);
-  }
+  };
 
   const onDelete = (name) => {
     props.unLikeGiph(name);
-  }
+  };
+
+  const onModalClick = () => {
+    props.onSearchChange('');
+    props.clearGiph();
+    setVisible(false);
+  };
 
   return (
     <Container>
 
       <Modal title="LETS GO TO THE NEXT GIF" isVisible={isVisible}>
         <IoMdCheckmarkCircleOutline style={styles.icon}/>
-        <div>
-          <Button onClick={() => setVisible(false)} style={{width: 200, padding: 10}}>Yes!</Button>
-        </div>
+        <Button onClick={onModalClick} style={{width: 200, padding: 10}}>Yes!</Button>
       </Modal>
 
       <div className="home_container">
@@ -78,7 +93,7 @@ const HomePage = (props) => {
           <SearchForm
             onChange={onInputChange}
             onSubmit={onSubmit}
-            value={props.giph.searchTerm}
+            inputValue={props.giph.searchTerm}
           />
 
 
@@ -131,5 +146,6 @@ export default connect(mapStateToProps, {
   onSearchChange,
   fetchGiph,
   likeGiph,
-  unLikeGiph
+  unLikeGiph,
+  clearGiph
 })(HomePage);

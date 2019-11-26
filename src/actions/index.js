@@ -6,7 +6,8 @@ import {
   LIKE_GIPH,
   UNLIKE_GIPH,
   ERROR_GIPH,
-  RESTART_GIPH
+  RESTART_GIPH,
+  CLEAR_GIPH
 } from './types'
 
 export const onSearchChange = (searchTerm) => {
@@ -21,6 +22,10 @@ export const onSliderChange = (num) => {
     type: SLIDER_CHANGE,
     payload: num
   }
+}
+
+export const clearGiph = () => {
+  return { type: CLEAR_GIPH }
 }
 
 export const fetchGiph = (num, searchTerm) => async (dispatch) => {
