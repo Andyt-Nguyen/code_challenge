@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { FaThumbsUp, FaTrash } from "react-icons/fa";
+import { IoMdCheckmarkCircleOutline } from 'react-icons/io'
 import { 
   Container, 
   SearchForm, 
@@ -12,10 +14,8 @@ import {
   ImageIconList, 
   Modal 
 } from '../../common';
-
 import { onSearchChange, fetchGiph, likeGiph, unLikeGiph, clearGiph } from '../../../actions';
-import { FaThumbsUp, FaTrash } from "react-icons/fa";
-import {IoMdCheckmarkCircleOutline} from 'react-icons/io'
+
 const styles = {
     btnContainer: { 
       width: '90%', 
@@ -31,6 +31,7 @@ const styles = {
 const HomePage = (props) => {
   const [sliderVal, setSlider] = useState(0);
   const [isVisible, setVisible] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
 
   const onInputChange = (e) => {
     props.onSearchChange(e.target.value);
@@ -48,6 +49,11 @@ const HomePage = (props) => {
   };
 
   const onLike = () => {
+    const isUsed = props.giph.likedGifs.find(gif => gif.name === props.giph.searchTerm);
+    if(isUsed && Object.values(isUsed).length > 0) {
+      setIsLiked(true);
+      return;
+    }
     const gifObj = {
       name: props.giph.searchTerm,
       url: props.giph.currGif.data.images.original.url,
@@ -95,6 +101,7 @@ const HomePage = (props) => {
             onSubmit={onSubmit}
             inputValue={props.giph.searchTerm}
           />
+          { isLiked && <p style={{color:'red'}}>You haved already like this search term. Please search for another gif.</p>}
 
 
           { 
