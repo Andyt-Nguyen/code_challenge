@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Container, Result, SearchForm } from '../../common';
+import { Container, SearchForm, Description, Card, ColumnCenter, ImageText, Button, Slider, ImageIconList } from '../../common';
 import { onSearchChange, fetchGiph, likeGiph, unLikeGiph } from '../../../actions';
-import Description from './Description';
-import LikedGiphs from './LikedGiphs';
+import { FaThumbsUp, FaTrash } from "react-icons/fa";
+
+const styles = {
+    btnContainer: { 
+      width: '90%', 
+      margin: 'auto',
+    }
+}
 
 const HomePage = (props) => {
   const [sliderVal, setSlider] = useState(0);
@@ -33,7 +39,7 @@ const HomePage = (props) => {
     props.likeGiph(gifObj);
   }
 
-  const onUnLike = (name) => {
+  const onDelete = (name) => {
     props.unLikeGiph(name);
   }
 
@@ -42,51 +48,61 @@ const HomePage = (props) => {
       <div className="home_container">
 
         <aside className="search_gif_container">
-          <Description />
-          <div style={{ marginTop: 55 }}></div>
+          <Description>
+            Lorem ipsum dolor amet chia franzen portland poutine kogi tousled vegan adaptogen umami yuccie four loko air plant cray VHS cred. Fashion axe kinfolk dreamcatcher pop-up semiotics food truck hot chicken knausgaard bespoke asymmetrical master cleanse before they sold out polaroid enamel pin.
+          </Description>
+
+          <div style={{ marginTop: 20 }} />
+
+          <Description>
+            Lorem ipsum dolor amet chia franzen portland poutine kogi tousled vegan adaptogen umami yuccie four loko air plant cray VHS cred. Fashion axe kinfolk dreamcatcher
+          </Description>
+
+          <div style={{ marginTop: 55 }} />
+
           <SearchForm
             onChange={onInputChange}
-            value={props.giph.searchTerm}
             onSubmit={onSubmit}
+            value={props.giph.searchTerm}
           />
 
-          {
+
+          { 
             Object.values(props.giph.currGif).length > 0 &&
-              <Result 
-                title={props.giph.currGif.data.title} 
-                url={props.giph.currGif.data.images.original.url} 
-                onLike={onLike}
-                onSliderChange={onSliderChange}
-                sliderVal={sliderVal}
-              />
+            <Card title="Your result">
+              <ColumnCenter>
+                <ImageText 
+                  title={props.giph.currGif.data.title} 
+                  url={props.giph.currGif.data.images.original.url} 
+                />
+                <Button style={{ width: 200 }} onClick={onLike}>
+                  <FaThumbsUp style={styles.icon}/>
+                </Button>
+              </ColumnCenter>
+
+              <Slider onChange={onSliderChange} value={sliderVal} />
+            </Card>
           }
+          
         </aside>
 
         <aside className="liked_container">
-          <LikedGiphs 
-            data={props.giph.likedGifs} 
-            unLike={onUnLike}
-          />
 
           {
             props.giph.likedGifs.length > 4 && 
-            <div style={{ width: '90%', margin: 'auto' }}>
-            <button 
-              style={{ 
-                width: '100%',
-                background: 'dodgerblue',
-                border: 'none',
-                padding: 10,
-                color: 'white',
-                borderRadius: 5,
-                fontSize: 15,
-                textAlign: 'center'
-                }}
-            >
+            <div style={styles.btnContainer}>
+              <Button style={{width: '100%'}}>
                 Calculate My Weirdness Score
-            </button>
-          </div>
+              </Button>
+            </div>
           }
+
+          <ImageIconList 
+            data={props.giph.likedGifs} 
+            onClick={onDelete}
+            Icon={<FaTrash style={{ color: 'crimson'}} />}
+          />
+
         </aside>
       </div>
     </Container>

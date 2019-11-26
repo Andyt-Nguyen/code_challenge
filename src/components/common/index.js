@@ -1,13 +1,26 @@
 import Header from './Header';
 import Container from './Container';
-import Result from './Result';
 import SearchForm from './SearchForm';
 import Image from './Image';
-
+import Description from './Description';
+import Card from './Card';
+import Slider from './Slider';
+import ImageText from './ImageText';
+import Button from './Button';
+import ColumnCenter from './ColumnCenter';
+import ImageIconList from './ImageIconList';
+import ImageIcon from './ImageIcon';
 export {
   Header,
   Container,
-  Result,
   SearchForm,
-  Image
+  Image,
+  Description,
+  Card,
+  Slider,
+  ImageText,
+  Button,
+  ColumnCenter,
+  ImageIconList,
+  ImageIcon
 }
