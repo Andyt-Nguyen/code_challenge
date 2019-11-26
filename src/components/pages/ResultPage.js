@@ -1,7 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { resetGiph } from '../../actions'
 import { Header, ImageIconList, Button } from '../common';
+import requireGifs from '../common/hoc/requireGifs';
 
 const ResultPage = (props) => {
   const calcAvg = (
@@ -41,10 +40,4 @@ const ResultPage = (props) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  return state;
-}
-
-export default connect(mapStateToProps, {
-  resetGiph
-})(ResultPage);
+export default requireGifs(ResultPage);
