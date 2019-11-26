@@ -8,12 +8,13 @@ const styles = {
   }
 };
 
-export default ({ data, onClick, style, Icon }) => {
+export default ({ data, onClick, style, Icon, imageStyles }) => {
   return (
     <div style={{ ...styles.flexWrap, ...style }}>
       {
         data.map(a => (
-          <ImageIcon 
+          <ImageIcon
+            imageStyles={imageStyles}
             key={a.name}
             onClick={() => onClick(a.name)} 
             title={a.name}

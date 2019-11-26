@@ -3,6 +3,10 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
 .word_spacing {
   line-height: 120%;
   font-size: 14px;
@@ -24,11 +28,11 @@
 }
 
 .search_gif_container {
-  width: 60%;
+  width: 70%;
 }
 
 .liked_container {
-  width: 40%;
+  width: 30%;
 }
 
 .search_input {
@@ -69,4 +73,5 @@
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  background: white;
 }

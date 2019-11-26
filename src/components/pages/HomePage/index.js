@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Container, SearchForm, Description, Card, ColumnCenter, ImageText, Button, Slider, ImageIconList } from '../../common';
+import { Container, SearchForm, Description, Card, ColumnCenter, ImageText, Button, Slider, ImageIconList, Modal } from '../../common';
 import { onSearchChange, fetchGiph, likeGiph, unLikeGiph } from '../../../actions';
 import { FaThumbsUp, FaTrash } from "react-icons/fa";
-
+import {IoMdCheckmarkCircleOutline} from 'react-icons/io'
 const styles = {
     btnContainer: { 
       width: '90%', 
       margin: 'auto',
+    },
+    icon: {
+      color: '#00aeef',
+      fontSize: 100,
+      marginTop: 30
     }
 }
 
 const HomePage = (props) => {
   const [sliderVal, setSlider] = useState(0);
+  const [isVisible, setVisible] = useState(false);
 
   const onInputChange = (e) => {
     props.onSearchChange(e.target.value);
@@ -37,6 +43,7 @@ const HomePage = (props) => {
       weirdVal: sliderVal
     }
     props.likeGiph(gifObj);
+    setVisible(true);
   }
 
   const onDelete = (name) => {
@@ -45,6 +52,14 @@ const HomePage = (props) => {
 
   return (
     <Container>
+
+      <Modal title="LETS GO TO THE NEXT GIF" isVisible={isVisible}>
+        <IoMdCheckmarkCircleOutline style={styles.icon}/>
+        <div>
+          <Button onClick={() => setVisible(false)} style={{width: 200, padding: 10}}>Yes!</Button>
+        </div>
+      </Modal>
+
       <div className="home_container">
 
         <aside className="search_gif_container">
@@ -58,7 +73,7 @@ const HomePage = (props) => {
             Lorem ipsum dolor amet chia franzen portland poutine kogi tousled vegan adaptogen umami yuccie four loko air plant cray VHS cred. Fashion axe kinfolk dreamcatcher
           </Description>
 
-          <div style={{ marginTop: 55 }} />
+          <div style={{ marginTop: 20 }} />
 
           <SearchForm
             onChange={onInputChange}
@@ -73,10 +88,10 @@ const HomePage = (props) => {
               <ColumnCenter>
                 <ImageText 
                   title={props.giph.currGif.data.title} 
-                  url={props.giph.currGif.data.images.original.url} 
+                  url={props.giph.currGif.data.images.original.url}
                 />
                 <Button style={{ width: 200 }} onClick={onLike}>
-                  <FaThumbsUp style={styles.icon}/>
+                  <FaThumbsUp />
                 </Button>
               </ColumnCenter>
 
@@ -88,6 +103,13 @@ const HomePage = (props) => {
 
         <aside className="liked_container">
 
+          <ImageIconList 
+            data={props.giph.likedGifs} 
+            onClick={onDelete}
+            Icon={<FaTrash style={{ color: 'crimson'}} />}
+            imageStyles={{width: 150, height: 150}}
+          />
+
           {
             props.giph.likedGifs.length > 4 && 
             <div style={styles.btnContainer}>
@@ -96,13 +118,6 @@ const HomePage = (props) => {
               </Button>
             </div>
           }
-
-          <ImageIconList 
-            data={props.giph.likedGifs} 
-            onClick={onDelete}
-            Icon={<FaTrash style={{ color: 'crimson'}} />}
-          />
-
         </aside>
       </div>
     </Container>

@@ -10,6 +10,8 @@ import Button from './Button';
 import ColumnCenter from './ColumnCenter';
 import ImageIconList from './ImageIconList';
 import ImageIcon from './ImageIcon';
+import Modal from './Modal';
+
 export {
   Header,
   Container,
@@ -22,5 +24,6 @@ export {
   Button,
   ColumnCenter,
   ImageIconList,
-  ImageIcon
+  ImageIcon,
+  Modal
 }

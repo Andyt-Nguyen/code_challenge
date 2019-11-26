@@ -24,14 +24,14 @@ const styles = {
   },
 };
 
-export default ({ title ,onClick, Icon, url }) => (
+export default ({ title ,onClick, Icon, url, imageStyles }) => (
   <div>
     <h4 style={styles.title}>{title}</h4>
     <div style={styles.resultTitle}>
       <button style={{ border: 'none', ...styles.btn }} onClick={onClick}>
         { Icon }
       </button>
-      <Image alt={title} url={url} />
+      <Image alt={title} url={url} style={imageStyles} />
     </div>
   </div>
 )

@@ -17,11 +17,11 @@ const styles = {
   }
 };
 
-export default ({ title, url }) => (
+export default ({ title, url, imageStyles }) => (
   <>
     <h4 style={styles.title}>{title}</h4>
     <div style={styles.imgContainer}>
-      <img src={url} alt={title} style={styles.img} />
+      <img src={url} alt={title} style={{...styles.img, ...imageStyles}} />
     </div>
   </>
 )
