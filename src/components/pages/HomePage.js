@@ -13,7 +13,7 @@ import {
   Slider, 
   ImageIconList, 
   Modal 
-} from '../../common';
+} from '../common';
 
 import { 
   onSearchChange,
@@ -21,7 +21,7 @@ import {
   likeGiph,
   unLikeGiph,
   clearGiph 
-} from '../../../actions';
+} from '../../actions';
 
 const styles = {
     btnContainer: { 

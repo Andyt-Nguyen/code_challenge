@@ -16,7 +16,6 @@ const ResultPage = (props) => {
 
   return (
     <div>
-      <Header />
       <div style={{ display:'flex', justifyContent:'center', marginBottom: 40}}>
       <h3>You scored {roundUp}/10</h3>
       </div>
