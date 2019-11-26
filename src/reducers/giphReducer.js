@@ -13,7 +13,13 @@ const INITIAL_STATE = {
   searchTerm: '',
   slideVal: 0,
   currGif: {}, // GIF_OBJECT
-  likedGifs: [], // { name: 'Name of gif', url: 'URL', weird: INT }
+  likedGifs: [
+    {name: 'Hi', url: 'https://placehold.it/400', weird: 3},
+    {name: 'Hi', url: 'https://placehold.it/400', weird: 5},
+    {name: 'Hi', url: 'https://placehold.it/400', weird: 8},
+    {name: 'Hi', url: 'https://placehold.it/400', weird: 2},
+    {name: 'Hi', url: 'https://placehold.it/400', weird: 1}
+  ], // { name: 'Name of gif', url: 'URL', weird: INT }
   errorMsg: ''
 };
 

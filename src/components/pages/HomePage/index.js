@@ -14,7 +14,14 @@ import {
   ImageIconList, 
   Modal 
 } from '../../common';
-import { onSearchChange, fetchGiph, likeGiph, unLikeGiph, clearGiph } from '../../../actions';
+
+import { 
+  onSearchChange,
+  fetchGiph,
+  likeGiph,
+  unLikeGiph,
+  clearGiph 
+} from '../../../actions';
 
 const styles = {
     btnContainer: { 
@@ -135,7 +142,7 @@ const HomePage = (props) => {
           {
             props.giph.likedGifs.length > 4 && 
             <div style={styles.btnContainer}>
-              <Button style={{width: '100%'}}>
+              <Button onClick={() => props.history.push('/result')} style={{width: '100%'}}>
                 Calculate My Weirdness Score
               </Button>
             </div>
