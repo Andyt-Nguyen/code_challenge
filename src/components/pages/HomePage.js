@@ -36,6 +36,11 @@ const styles = {
     error: {
       color: 'crimson',
       marginTop: 10
+    },
+    pStyle: {
+      textAlign: 'center', 
+      color:'dodgerblue', 
+      marginTop: 10
     }
 }
 
@@ -50,6 +55,7 @@ const HomePage = (props) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    if(props.giph.likedGifs.length >= 5) return;
     setSlider(0);
     await props.fetchGiph(0, props.giph.searchTerm);
     setIsLiked(false);
@@ -108,15 +114,18 @@ const HomePage = (props) => {
           </Description>
 
           <div style={{ marginTop: 20 }} />
-
+          
           <SearchForm
             onChange={onInputChange}
             onSubmit={onSubmit}
             inputValue={props.giph.searchTerm}
           />
+
+          { props.giph.likedGifs.length >= 5 && <p style={styles.error}>Your likes have been maxed out</p>}
           { isLiked && <p style={styles.error}>You haved already like this search term. Please search for another gif.</p>}
 
           <p style={styles.error}>{ props.giph.errorMsg }</p>
+
           {
             Object.values(props.giph.currGif).length > 0 &&
             <Card title="Your result">
@@ -129,15 +138,13 @@ const HomePage = (props) => {
                   <FaThumbsUp />
                 </Button>
               </ColumnCenter>
-
+              <p style={{color:'dodgerblue'}}>Weridness Level: {sliderVal}</p>
               <Slider onChange={onSliderChange} value={sliderVal} />
             </Card>
           }
-          
         </aside>
 
         <aside className="liked_container">
-
           <ImageIconList 
             data={props.giph.likedGifs} 
             onClick={onDelete}
@@ -145,6 +152,13 @@ const HomePage = (props) => {
             imageStyles={{width: 150, height: 150}}
           />
 
+          { 
+            props.giph.likedGifs.length < 5 &&
+            <p style={styles.pStyle}>
+              You need {5 - props.giph.likedGifs.length} more likes to find out your wierdness
+            </p>
+          }
+          
           {
             props.giph.likedGifs.length > 4 && 
             <div style={styles.btnContainer}>
