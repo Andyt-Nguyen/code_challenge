@@ -1,43 +1,55 @@
 import giphyApi from '../utils/giphyApi';
 import {
-  FETCH_GIF,
-  SEARCH_GIF,
-  LIKE_GIF,
-  UNLIKE_GIF,
-  ERROR_GIF,
-  RESTART_GIF
+  FETCH_GIPH,
+  SEARCH_CHANGE,
+  SLIDER_CHANGE,
+  LIKE_GIPH,
+  UNLIKE_GIPH,
+  ERROR_GIPH,
+  RESTART_GIPH
 } from './types'
 
-export const searchGif = (searchTerm) => {
+export const onSearchChange = (searchTerm) => {
   return {
-    type: SEARCH_GIF,
+    type: SEARCH_CHANGE,
     payload: searchTerm
   }
 };
 
-export const fetchGif = (num, searchTerm) => async (dispatch) => {
+export const onSliderChange = (num) => {
+  return {
+    type: SLIDER_CHANGE,
+    payload: num
+  }
+}
+
+export const fetchGiph = (num, searchTerm) => async (dispatch) => {
   try {
-    const { data } = await giphyApi.getWeirdGif(num, searchTerm);
-    return dispatch({ type: FETCH_GIF, payload: data });
+    console.log(num, searchTerm)
+    const res = await giphyApi.getWeirdGiph(num, searchTerm);
+    console.log('DATA',res.data);
+
+    dispatch({ type: FETCH_GIPH, payload: res.data });
   } catch(e) {
-    return dispatch({ type: ERROR_GIF, payload: 'There was a problem fetching a giph :('});
+    console.log(e);
+    return dispatch({ type: ERROR_GIPH, payload: 'There was a problem fetching a giph :('});
   }
 };
 
-export const likeGif = (gifUrl) => {
+export const likeGiph = (gifUrl) => {
   return {
-    type: LIKE_GIF,
+    type: LIKE_GIPH,
     payload: gifUrl
   }
 };
 
-export const unLikeGif = (gifUrl) => {
+export const unLikeGiph = (gifUrl) => {
   return {
-    type: UNLIKE_GIF,
+    type: UNLIKE_GIPH,
     payload: gifUrl
   }
 };
 
-export const resetGif = () => {
-  return { type: RESTART_GIF };
+export const resetGiph = () => {
+  return { type: RESTART_GIPH };
 }

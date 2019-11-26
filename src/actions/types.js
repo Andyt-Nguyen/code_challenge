@@ -1,6 +1,7 @@
-export const SEARCH_GIF = 'SEARCH_GIF';
-export const FETCH_GIF = 'FETCH_GIF';
-export const LIKE_GIF = 'LIKE_GIF';
-export const UNLIKE_GIF = 'UNLIKE_GIF';
-export const ERROR_GIF = 'ERROR_GIF';
-export const RESTART_GIF = 'RESTART_GIF';
+export const SEARCH_CHANGE = 'ON_SEARCH_CHANGE';
+export const SLIDER_CHANGE = 'SLIDER '
+export const FETCH_GIPH = 'FETCH_GIPH';
+export const LIKE_GIPH = 'LIKE_GIPH';
+export const UNLIKE_GIPH = 'UNLIKE_GIPH';
+export const ERROR_GIPH = 'ERROR_GIPH';
+export const RESTART_GIPH = 'RESTART_GIPH';
