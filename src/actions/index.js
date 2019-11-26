@@ -36,10 +36,10 @@ export const fetchGiph = (num, searchTerm) => async (dispatch) => {
   }
 };
 
-export const likeGiph = (gifUrl) => {
+export const likeGiph = (gifObj) => {
   return {
     type: LIKE_GIPH,
-    payload: gifUrl
+    payload: gifObj
   }
 };
 

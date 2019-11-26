@@ -25,12 +25,10 @@
 
 .search_gif_container {
   width: 60%;
-  border: 2px solid red;
 }
 
 .liked_container {
   width: 40%;
-  border:2px solid blue;
 }
 
 .search_input {
@@ -51,6 +49,7 @@
 
 .result {
   margin-top: 20px;
+  border: 2px solid #ddd;
 }
 
 .slider_container {
@@ -61,4 +60,10 @@
   width: 100px;
   padding: 5px;
   border: 2px solid dodgerblue;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+.btn:hover {
+  opacity: .5;
 }

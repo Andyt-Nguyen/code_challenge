@@ -33,6 +33,8 @@ export default (state=INITIAL_STATE, action) => {
       return { ...state, errorMsg: '', likedGifs };
 
     case UNLIKE_GIPH:
+      console.log('PAYLOAD', action.payload);
+      console.log(state.likedGifs);
       const filterGif = state.likedGifs.filter(a => a.name !== action.payload);
       return { ...state, likedGifs: filterGif };
 

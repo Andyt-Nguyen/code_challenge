@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default ({ onChange, onSubmit }) => (
-  <>
+  <form onSubmit={onSubmit}>
     <label style={{display: "block", marginBottom: 10}}>Search Term</label>
     <input 
       className="search_input" 
@@ -9,7 +9,7 @@ export default ({ onChange, onSubmit }) => (
     />
     <button
      className="submit_btn"
-     onClick={onSubmit}
+     type="submit"
     >Submit</button>
-  </>
+  </form>
 )
