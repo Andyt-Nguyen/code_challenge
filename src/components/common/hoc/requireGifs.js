@@ -2,6 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { resetGiph } from '../../../actions'
 
+/**
+ * Goal of this Higher Order Component
+ * is to keep users away from routing to the results
+ * page if they have not met the max likes
+ */
+
 export default ChildComponent => {
   const ComposedComponent = (props) => {
     const [isLoading, setIsLoading] = useState(true);

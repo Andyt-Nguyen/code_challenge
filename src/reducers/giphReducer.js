@@ -12,13 +12,13 @@ import {
 const INITIAL_STATE = {
   searchTerm: '',
   loading: false,
-  currGif: [], // GIF_OBJECT from api
+  currGif: {}, // GIF_OBJECT from api
   likedGifs: [], // { name: 'Name of gif', url: 'URL', weirdVal: INT }
   errorMsg: ''
 };
 
-export default (state=INITIAL_STATE, action) => {
-  switch(action.type) {
+export default (state = INITIAL_STATE, action) => {
+  switch (action.type) {
     case SEARCH_CHANGE:
       return { ...state, searchTerm: action.payload };
 
@@ -30,7 +30,7 @@ export default (state=INITIAL_STATE, action) => {
 
     case CLEAR_GIPH:
       return { ...state, currGif: {} };
-      
+
     case LIKE_GIPH:
       const likedGifs = [...state.likedGifs, action.payload];
       return { ...state, errorMsg: '', likedGifs };
@@ -44,7 +44,7 @@ export default (state=INITIAL_STATE, action) => {
 
     case RESTART_GIPH:
       return { ...INITIAL_STATE };
-      
+
     default:
       return state;
   }

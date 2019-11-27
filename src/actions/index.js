@@ -10,24 +10,35 @@ import {
   LOADING_GIPH
 } from './types'
 
-export const giphLoading = () => {
-  return { type: LOADING_GIPH }
-}
-export const onSearchChange = (searchTerm) => {
-  return {
+
+// Tracks the user search as they type
+export const onSearchChange = (searchTerm) => ({
     type: SEARCH_CHANGE,
     payload: searchTerm
-  }
-};
+});
 
-export const clearGiph = () => {
-  return { type: CLEAR_GIPH }
-}
+// Emits a loading event
+export const giphLoading = () => ({ type: LOADING_GIPH });
 
+// Clears the currGiph object to its initial state
+export const clearGiph = () => ({ type: CLEAR_GIPH });
+
+// Reinitializes the initial state
+export const resetGiph = () => ({ type: RESTART_GIPH })
+
+
+/**
+ * @param { int } num 
+ * @param { string } searchTerm
+ * Fetches a .gif URL
+ */
 export const fetchGiph = (num, searchTerm) => async (dispatch) => {
   dispatch(giphLoading());
   try {
-    const res = await giphyApi.getWeirdGiph(num, searchTerm);
+    const res = await giphyApi.getTranslate(num, searchTerm);
+    // This checkes if there are any gif results in the api
+    // if none exist it will dispatch an error that there 
+    // are no results
     res.data.data.length <= 0 
     ? dispatch({ 
         type: ERROR_GIPH, 
@@ -36,10 +47,17 @@ export const fetchGiph = (num, searchTerm) => async (dispatch) => {
     : dispatch({ type: FETCH_GIPH, payload: res.data });
     
   } catch(e) {
-    return dispatch({ type: ERROR_GIPH, payload: 'There was a problem fetching a giph :('});
+    return dispatch({ 
+      type: ERROR_GIPH, 
+      payload: 'There was a problem fetching a giph :('
+    });
   }
 };
 
+/**
+ * @param { name: String, url: URI, weirdVal: int } gifObj 
+ * Add gif to store
+ */
 export const likeGiph = (gifObj) => {
   return {
     type: LIKE_GIPH,
@@ -47,13 +65,13 @@ export const likeGiph = (gifObj) => {
   }
 };
 
-export const unLikeGiph = (gifUrl) => {
+/**
+ * @param { searchTerm: string } searchTerm
+ * Removes gif from store
+ */
+export const unLikeGiph = (searchTerm) => {
   return {
     type: UNLIKE_GIPH,
-    payload: gifUrl
+    payload: searchTerm
   }
 };
-
-export const resetGiph = () => {
-  return { type: RESTART_GIPH };
-}
