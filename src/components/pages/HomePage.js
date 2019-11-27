@@ -90,13 +90,13 @@ const HomePage = (props) => {
 
         <aside className="search_gif_container">
           <Description>
-            Lorem ipsum dolor amet chia franzen portland poutine kogi tousled vegan adaptogen umami yuccie four loko air plant cray VHS cred. Fashion axe kinfolk dreamcatcher pop-up semiotics food truck hot chicken knausgaard bespoke asymmetrical master cleanse before they sold out polaroid enamel pin.
+            Found out how weird you are by selecting the GIFS that make you laugh. We'll show you the least weird ones to start, but you can move the slider to make them weirder.
           </Description>
 
           <div style={styles.spacer} />
 
           <Description>
-            Lorem ipsum dolor amet chia franzen portland poutine kogi tousled vegan adaptogen umami yuccie four loko air plant cray VHS cred. Fashion axe kinfolk dreamcatcher
+            When you find a Gif you like, press the <i>Like</i> button. Once you like 5 GIFs, we'll show you how weird you are.
           </Description>
 
           <div style={styles.spacer} />
@@ -186,7 +186,7 @@ const styles = {
     marginTop: 20
   },
   imageStyle: {
-    width: 150,
+    width: 220,
     height: 150
   }
 };

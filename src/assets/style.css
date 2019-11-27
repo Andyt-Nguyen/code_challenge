@@ -10,8 +10,9 @@ body {
 }
 
 .word_spacing {
-  line-height: 120%;
+  line-height: 130%;
   font-size: 14px;
+  width: 80%;
 }
 
 .header div {
@@ -30,11 +31,11 @@ body {
 }
 
 .search_gif_container {
-  width: 70%;
+  width: 60%;
 }
 
 .liked_container {
-  width: 30%;
+  width: 500px;
 }
 
 .search_input {
