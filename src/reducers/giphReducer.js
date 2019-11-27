@@ -40,7 +40,7 @@ export default (state=INITIAL_STATE, action) => {
       return { ...state, currGif: {}, likedGifs: filterGif };
 
     case ERROR_GIPH:
-      return { ...state, currGif: {}, errorMsg: action.payload };
+      return { ...state, currGif: {}, loading: false, errorMsg: action.payload };
 
     case RESTART_GIPH:
       return { ...INITIAL_STATE };
