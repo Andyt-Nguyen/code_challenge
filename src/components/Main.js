@@ -6,7 +6,7 @@ import { Header } from './common';
 
 export default () => (
   <Router>
-    <Header title="Wierdness Calcuator" />
+    <Header title="Weirdness Calcuator" />
     <Route exact path="/" component={HomePage} />
     <Route exact path="/result" component={ResultPage} />
   </Router>

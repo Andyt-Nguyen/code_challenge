@@ -141,7 +141,7 @@ const HomePage = (props) => {
           {
             props.giph.likedGifs.length < MIN_LIKES &&
             <p style={props.giph.likedGifs.length <=0 ? { color: 'dodgerblue', textAlign:'center' } : styles.pStyle}>
-              You need {MIN_LIKES - props.giph.likedGifs.length} more likes to find out your wierdness
+              You need {MIN_LIKES - props.giph.likedGifs.length} more likes to find out your weirdness
             </p>
           }
 
