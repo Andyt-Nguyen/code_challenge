@@ -5,7 +5,7 @@ export default () => {
   return (
     <Container>
       <h1 style={{ textAlign: 'center' }}>
-        <i>Sorry the page your looking for does not exist :(</i>
+        <i>Sorry the page you're looking for does not exist :(</i>
       </h1>
       <div style={{ display: 'flex', justifyContent: 'center'}}>
         <ImageIcon 
