@@ -51,11 +51,6 @@ html, body {
   font-size: 15px;
 }
 
-.result {
-  margin-top: 20px;
-  border: 2px solid #ddd;
-}
-
 .slider_container {
   margin: auto;
 }

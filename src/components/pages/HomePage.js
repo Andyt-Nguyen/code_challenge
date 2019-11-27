@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { FaThumbsUp, FaTrash } from "react-icons/fa";
 import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
+import Loader from 'react-loader-spinner';
+
 import { 
   onSearchChange,
   fetchGiph,
@@ -128,11 +130,10 @@ const HomePage = (props) => {
             onChange={onInputChange}
             onSubmit={onSubmit}
             inputValue={props.giph.searchTerm}
-            loading={props.giph.loading}
           />
 
           { props.giph.likedGifs.length >= MAX_LIKES && <p style={styles.error}>Your likes have been maxed out</p>}
-          { isLiked && <p style={styles.error}>You haved already like this search term. Please search for another gif.</p>}
+          { isLiked && <p style={styles.error}>You have already liked this search term. Please search for another gif.</p>}
 
           <p style={styles.error}>{ props.giph.errorMsg }</p>
 
@@ -140,7 +141,8 @@ const HomePage = (props) => {
             Object.values(props.giph.currGif).length > 0 &&
             <Card title="Your result">
               <ColumnCenter>
-                <ImageText 
+                <ImageText
+                  loading={props.giph.loading}
                   title={props.giph.currGif.data.title} 
                   url={props.giph.currGif.data.images.original.url}
                 />
