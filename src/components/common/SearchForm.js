@@ -4,7 +4,8 @@ export default ({ onChange, onSubmit, inputValue, loading }) => (
   <form onSubmit={onSubmit}>
     <label style={{display: "block", marginBottom: 10}}>Search Term</label>
     <div style={{ display: 'flex', alignItems: 'center'}}>
-    <input 
+    <input
+      required
       className="search_input" 
       onChange={onChange}
       value={inputValue}
