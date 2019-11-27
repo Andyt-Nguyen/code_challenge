@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageIconList, Button, requireGifs } from '../common';
+import { ImageIconList, Button, requireGifs, Container } from '../common';
 import { MAX_AMOUNT } from '../../utils/constants';
 
 const ResultPage = (props) => {
@@ -14,16 +14,18 @@ const ResultPage = (props) => {
     props.history.push('/');
   };
 
+  const rating = (giphArray) => {
+    return giphArray.map(giph => ({...giph, description: `${giph.weirdVal}/${MAX_AMOUNT}`}));
+  }
   return (
-    <div>
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 40 }}>
+    <Container>
+      <div style={styles.result}>
         <h3>You scored {roundUp}/{MAX_AMOUNT}</h3>
       </div>
 
       <ImageIconList
-        style={{ justifyContent: 'space-around' }}
         Icon={<div />}
-        data={props.giph.likedGifs}
+        data={rating(props.giph.likedGifs)}
       />
 
       <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -31,8 +33,7 @@ const ResultPage = (props) => {
           Start Over
         </Button>
       </div>
-
-    </div>
+    </Container>
   )
 };
 
@@ -41,6 +42,12 @@ const styles = {
   btnStyle: {
     width: 200,
     padding: 10
+  },
+
+  result: {
+    display: 'flex', 
+    justifyContent: 'center', 
+    marginBottom: 40
   }
 };
 

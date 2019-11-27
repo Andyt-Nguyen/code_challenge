@@ -22,9 +22,13 @@ const styles = {
     position: 'relative', 
     marginLeft: 5 
   },
+
+  centerText: {
+    textAlign: 'center'
+  }
 };
 
-export default ({ title ,onClick, Icon, url, imageStyles }) => (
+export default ({ title ,onClick, Icon, url, imageStyles, description }) => (
   <div>
     <h4 style={styles.title}>{title}</h4>
     <div style={styles.resultTitle}>
@@ -33,5 +37,6 @@ export default ({ title ,onClick, Icon, url, imageStyles }) => (
       </button>
       <Image alt={title} url={url} style={imageStyles} />
     </div>
+    <p style={styles.centerText}>{description}</p>
   </div>
 )

@@ -3,7 +3,7 @@ import ImageIcon from './ImageIcon';
 
 const styles = {
   flexWrap: {
-    display: 'flex', 
+    display: 'flex',
     flexWrap: 'wrap'
   }
 };
@@ -16,10 +16,11 @@ export default ({ data, onClick, style, Icon, imageStyles }) => {
           <ImageIcon
             imageStyles={imageStyles}
             key={a.name}
-            onClick={() => onClick(a.name)} 
+            onClick={() => onClick(a.name)}
             title={a.name}
             url={a.url}
             Icon={Icon}
+            description={a.description}
           />
         ))
       }

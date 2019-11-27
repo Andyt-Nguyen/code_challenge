@@ -21,7 +21,7 @@ import {
   ImageIconList,
   Modal
 } from '../common';
-import { MAX_LIKES } from '../../utils/constants';
+import { MIN_LIKES } from '../../utils/constants';
 
 const HomePage = (props) => {
   // Local state
@@ -34,11 +34,9 @@ const HomePage = (props) => {
     props.onSearchChange(e.target.value);
   };
 
-  // Makes a call to the gif api only if that have
-  // not reached the max likes
+  // Makes a call to the gif api on the user's search
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (props.giph.likedGifs.length >= MAX_LIKES) return;
     setSlider(0);
     await props.fetchGiph(0, props.giph.searchTerm);
     setIsLiked(false);
@@ -109,7 +107,6 @@ const HomePage = (props) => {
             inputValue={props.giph.searchTerm}
           />
 
-          {props.giph.likedGifs.length >= MAX_LIKES && <p style={styles.error}>Your likes have been maxed out</p>}
           {isLiked && <p style={styles.error}>You have already liked this search term. Please search for another gif.</p>}
 
           <p style={styles.error}>{props.giph.errorMsg}</p>
@@ -142,14 +139,14 @@ const HomePage = (props) => {
           />
 
           {
-            props.giph.likedGifs.length < MAX_LIKES &&
-            <p style={styles.pStyle}>
-              You need {MAX_LIKES - props.giph.likedGifs.length} more likes to find out your wierdness
+            props.giph.likedGifs.length < MIN_LIKES &&
+            <p style={props.giph.likedGifs.length <=0 ? { color: 'dodgerblue', textAlign:'center' } : styles.pStyle}>
+              You need {MIN_LIKES - props.giph.likedGifs.length} more likes to find out your wierdness
             </p>
           }
 
           {
-            props.giph.likedGifs.length >= MAX_LIKES &&
+            props.giph.likedGifs.length >= MIN_LIKES &&
             <div style={styles.btnContainer}>
               <Button
                 style={{ width: '100%' }}
