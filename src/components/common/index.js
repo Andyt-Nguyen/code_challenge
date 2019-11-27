@@ -11,6 +11,7 @@ import ColumnCenter from './ColumnCenter';
 import ImageIconList from './ImageIconList';
 import ImageIcon from './ImageIcon';
 import Modal from './Modal';
+import Spacer from './Spacer';
 import requireGifs from './hoc/requireGifs';
 
 export {
@@ -27,5 +28,6 @@ export {
   ImageIconList,
   ImageIcon,
   Modal,
+  Spacer,
   requireGifs
 }

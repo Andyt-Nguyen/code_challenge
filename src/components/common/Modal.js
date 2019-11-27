@@ -19,41 +19,41 @@ const styles = {
   },
 
   contentContainer: {
-    display: 'flex', 
-    flexDirection: 'column', 
+    display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center'
   },
 
 };
 
-export default ({ children, title, isVisible}) => ReactDOM.createPortal(
-    <div 
-      style={{
-      ...styles.modalContainer, 
+export default ({ children, title, isVisible }) => ReactDOM.createPortal(
+  <div
+    style={{
+      ...styles.modalContainer,
       display: isVisible ? 'block' : 'none'
-      }} 
-    >
-      <div className={ isVisible ? 'bounceIn' : ''}>
-        <Card 
-          style={styles.modal} 
-          titleStyle={{
-            background:'#00aeef', 
-            textAlign:'center',
-            color: 'white',
-            fontWeight: '300',
-            paddingBottom: 20,
-            fontFamily: 'Pacifico'
-          }} 
-          title={title}
-        >
-          <ColumnCenter>
-            { children }
-          </ColumnCenter>
-          
-        </Card>
+    }}
+  >
+    <div className={isVisible ? 'bounceIn' : ''}>
+      <Card
+        style={styles.modal}
+        titleStyle={{
+          background: '#00aeef',
+          textAlign: 'center',
+          color: 'white',
+          fontWeight: '300',
+          paddingBottom: 20,
+          fontFamily: 'Pacifico'
+        }}
+        title={title}
+      >
+        <ColumnCenter>
+          {children}
+        </ColumnCenter>
 
-      </div>
-    </div>,
-    document.getElementById('modal')
+      </Card>
+
+    </div>
+  </div>,
+  document.getElementById('modal')
 )
 // export default ReactDOM.createPortal(Modal, );

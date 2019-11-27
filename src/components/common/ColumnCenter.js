@@ -2,8 +2,8 @@ import React from 'react';
 
 const styles = {
   container: {
-    display: 'flex', 
-    flexDirection: 'column', 
+    display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center'
   }
 };

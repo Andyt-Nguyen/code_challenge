@@ -19,7 +19,8 @@ import {
   Button,
   Slider,
   ImageIconList,
-  Modal
+  Modal,
+  Spacer
 } from '../common';
 import { MIN_LIKES } from '../../utils/constants';
 
@@ -93,13 +94,13 @@ const HomePage = (props) => {
             Found out how weird you are by selecting the GIFS that make you laugh. We'll show you the least weird ones to start, but you can move the slider to make them weirder.
           </Description>
 
-          <div style={styles.spacer} />
+          <Spacer />
 
           <Description>
             When you find a Gif you like, press the <i>Like</i> button. Once you like 5 GIFs, we'll show you how weird you are.
           </Description>
 
-          <div style={styles.spacer} />
+          <Spacer />
 
           <SearchForm
             onChange={onInputChange}
@@ -140,7 +141,7 @@ const HomePage = (props) => {
 
           {
             props.giph.likedGifs.length < MIN_LIKES &&
-            <p style={props.giph.likedGifs.length <=0 ? { color: 'dodgerblue', textAlign:'center' } : styles.pStyle}>
+            <p style={props.giph.likedGifs.length <= 0 ? { color: 'dodgerblue', textAlign: 'center' } : styles.pStyle}>
               You need {MIN_LIKES - props.giph.likedGifs.length} more likes to find out your weirdness
             </p>
           }
@@ -182,9 +183,7 @@ const styles = {
     color: 'dodgerblue',
     marginTop: 10
   },
-  spacer: {
-    marginTop: 20
-  },
+  
   imageStyle: {
     width: 220,
     height: 150

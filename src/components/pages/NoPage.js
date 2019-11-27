@@ -8,9 +8,9 @@ export default (props) => {
         <i>Sorry the page you're looking for does not exist :(</i>
       </h1>
       <ColumnCenter>
-        <ImageIcon 
+        <ImageIcon
           url="https://media.giphy.com/media/MarYoZ2BIJUimKydXa/giphy.gif"
-          imageStyles={{ width: 400, height: 500}}
+          imageStyles={{ width: 400, height: 500 }}
           style={{ justifyContent: 'center' }}
         />
         <Button onClick={() => props.history.push('/')}>Go to home page</Button>

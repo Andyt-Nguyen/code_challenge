@@ -14,13 +14,13 @@ export default ChildComponent => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-      props.giph.likedGifs.length < MIN_LIKES 
-      ? props.history.push('/')
-      : setIsLoading(false);
+      props.giph.likedGifs.length < MIN_LIKES
+        ? props.history.push('/')
+        : setIsLoading(false);
     }, [props.giph.likedGifs, props.history]);
 
     return (
-        isLoading
+      isLoading
         ? <div>Loading</div>
         : <ChildComponent {...props} />
     )

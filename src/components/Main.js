@@ -9,9 +9,9 @@ export default () => (
   <Router>
     <Header title="Weirdness Calcuator" />
     <Switch>
-    <Route exact path="/" component={HomePage} />
-    <Route exact path="/results" component={ResultPage} />
-    <Route component={NoPage} />
+      <Route exact path="/" component={HomePage} />
+      <Route exact path="/results" component={ResultPage} />
+      <Route component={NoPage} />
     </Switch>
   </Router>
 )

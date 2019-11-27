@@ -15,7 +15,7 @@ const ResultPage = (props) => {
   };
 
   const rating = (giphArray) => {
-    return giphArray.map(giph => ({...giph, description: `${giph.weirdVal}/${MAX_AMOUNT}`}));
+    return giphArray.map(giph => ({ ...giph, description: `${giph.weirdVal}/${MAX_AMOUNT}` }));
   }
   return (
     <Container>
@@ -45,8 +45,8 @@ const styles = {
   },
 
   result: {
-    display: 'flex', 
-    justifyContent: 'center', 
+    display: 'flex',
+    justifyContent: 'center',
     marginBottom: 40
   }
 };

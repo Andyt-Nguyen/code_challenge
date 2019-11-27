@@ -13,8 +13,8 @@ import {
 
 // Tracks the user search as they type
 export const onSearchChange = (searchTerm) => ({
-    type: SEARCH_CHANGE,
-    payload: searchTerm
+  type: SEARCH_CHANGE,
+  payload: searchTerm
 });
 
 // Emits a loading event
@@ -39,16 +39,16 @@ export const fetchGiph = (num, searchTerm) => async (dispatch) => {
     // This checkes if there are any gif results in the api
     // if none exist it will dispatch an error that there 
     // are no results
-    res.data.data.length <= 0 
-    ? dispatch({ 
-        type: ERROR_GIPH, 
+    res.data.data.length <= 0
+      ? dispatch({
+        type: ERROR_GIPH,
         payload: `Could not find any results for ${searchTerm}`
       })
-    : dispatch({ type: FETCH_GIPH, payload: res.data });
-    
-  } catch(e) {
-    return dispatch({ 
-      type: ERROR_GIPH, 
+      : dispatch({ type: FETCH_GIPH, payload: res.data });
+
+  } catch (e) {
+    return dispatch({
+      type: ERROR_GIPH,
       payload: 'There was a problem fetching a giph :('
     });
   }
