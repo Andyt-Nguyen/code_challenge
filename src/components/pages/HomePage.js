@@ -150,7 +150,7 @@ const HomePage = (props) => {
             <div style={styles.btnContainer}>
               <Button
                 style={{ width: '100%' }}
-                onClick={() => props.history.push('/result')}
+                onClick={() => props.history.push('/results')}
               >
                 Calculate My Weirdness Score
               </Button>

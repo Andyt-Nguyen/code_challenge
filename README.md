@@ -8,7 +8,7 @@ minimum of 5 gifs have been favorited the user is then prompted to route to see 
 ## Screenshots
 ### Home Page
 ![Homepage](/src/assets/images/homepage.png)
-### Result Page
+### Results Page
 ![Resultpage](/src/assets/images/resultpage.png)
 
 ## Getting started

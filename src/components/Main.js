@@ -8,6 +8,6 @@ export default () => (
   <Router>
     <Header title="Weirdness Calcuator" />
     <Route exact path="/" component={HomePage} />
-    <Route exact path="/result" component={ResultPage} />
+    <Route exact path="/results" component={ResultPage} />
   </Router>
 )
