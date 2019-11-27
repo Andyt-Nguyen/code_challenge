@@ -25,6 +25,10 @@ const styles = {
 
   centerText: {
     textAlign: 'center'
+  },
+
+  image: {
+    objectFit: 'cover'
   }
 };
 
@@ -35,7 +39,7 @@ export default ({ title ,onClick, Icon, url, imageStyles, description }) => (
       <button style={{ border: 'none', ...styles.btn }} onClick={onClick}>
         { Icon }
       </button>
-      <Image alt={title} url={url} style={imageStyles} />
+      <Image alt={title} url={url} style={{...styles.image, ...imageStyles}} />
     </div>
     <p style={styles.centerText}>{description}</p>
   </div>
