@@ -2,14 +2,17 @@ import giphyApi from '../utils/giphyApi';
 import {
   FETCH_GIPH,
   SEARCH_CHANGE,
-  SLIDER_CHANGE,
   LIKE_GIPH,
   UNLIKE_GIPH,
   ERROR_GIPH,
   RESTART_GIPH,
-  CLEAR_GIPH
+  CLEAR_GIPH,
+  LOADING_GIPH
 } from './types'
 
+export const giphLoading = () => {
+  return { type: LOADING_GIPH }
+}
 export const onSearchChange = (searchTerm) => {
   return {
     type: SEARCH_CHANGE,
@@ -17,18 +20,12 @@ export const onSearchChange = (searchTerm) => {
   }
 };
 
-export const onSliderChange = (num) => {
-  return {
-    type: SLIDER_CHANGE,
-    payload: num
-  }
-}
-
 export const clearGiph = () => {
   return { type: CLEAR_GIPH }
 }
 
 export const fetchGiph = (num, searchTerm) => async (dispatch) => {
+  dispatch(giphLoading());
   try {
     const res = await giphyApi.getWeirdGiph(num, searchTerm);
     res.data.data.length <= 0 

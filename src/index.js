@@ -7,6 +7,7 @@ import reducers from './reducers';
 import Main from './components/Main';
 import './reset.css';
 import './style.css';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const store = createStore(reducers, applyMiddleware(thunk));
 

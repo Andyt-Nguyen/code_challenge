@@ -1,6 +1,5 @@
 import React from 'react';
-import { ImageIconList, Button } from '../common';
-import requireGifs from '../common/hoc/requireGifs';
+import { ImageIconList, Button, requireGifs } from '../common';
 import { MAX_AMOUNT } from '../../utils/constants';
 
 const styles = {

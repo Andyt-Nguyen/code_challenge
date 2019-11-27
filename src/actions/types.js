@@ -1,5 +1,5 @@
 export const SEARCH_CHANGE = 'ON_SEARCH_CHANGE';
-export const SLIDER_CHANGE = 'SLIDER '
+export const LOADING_GIPH = 'LOADING_GIPH';
 export const FETCH_GIPH = 'FETCH_GIPH';
 export const LIKE_GIPH = 'LIKE_GIPH';
 export const UNLIKE_GIPH = 'UNLIKE_GIPH';

@@ -5,13 +5,13 @@ import {
   UNLIKE_GIPH,
   ERROR_GIPH,
   RESTART_GIPH,
-  SLIDER_CHANGE,
-  CLEAR_GIPH
+  CLEAR_GIPH,
+  LOADING_GIPH
 } from '../actions/types';
 
 const INITIAL_STATE = {
   searchTerm: '',
-  slideVal: 0,
+  loading: false,
   currGif: [], // GIF_OBJECT from api
   likedGifs: [], // { name: 'Name of gif', url: 'URL', weirdVal: INT }
   errorMsg: ''
@@ -21,12 +21,12 @@ export default (state=INITIAL_STATE, action) => {
   switch(action.type) {
     case SEARCH_CHANGE:
       return { ...state, searchTerm: action.payload };
-    
-    case SLIDER_CHANGE:
-      return { ...state, slideVal: action.payload };
 
     case FETCH_GIPH:
-      return { ...state, errorMsg: '', currGif: action.payload };
+      return { ...state, errorMsg: '', loading: false, currGif: action.payload };
+
+    case LOADING_GIPH:
+      return { ...state, loading: true };
 
     case CLEAR_GIPH:
       return { ...state, currGif: {} };

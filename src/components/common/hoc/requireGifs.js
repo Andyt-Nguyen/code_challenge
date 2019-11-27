@@ -22,8 +22,6 @@ export default ChildComponent => {
   }
 
 
-  const mapStateToProps = (state) => {
-    return state;
-  }
+  const mapStateToProps = (state) => state;
   return connect(mapStateToProps, { resetGiph })(ComposedComponent);
 }

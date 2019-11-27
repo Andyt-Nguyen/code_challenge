@@ -81,7 +81,7 @@ const HomePage = (props) => {
     if(isUsed && Object.values(isUsed).length > 0) {
       setIsLiked(true);
       return;
-    }
+    };
     const gifObj = {
       name: props.giph.searchTerm,
       url: props.giph.currGif.data.images.original.url,
@@ -128,6 +128,7 @@ const HomePage = (props) => {
             onChange={onInputChange}
             onSubmit={onSubmit}
             inputValue={props.giph.searchTerm}
+            loading={props.giph.loading}
           />
 
           { props.giph.likedGifs.length >= MAX_LIKES && <p style={styles.error}>Your likes have been maxed out</p>}
@@ -185,9 +186,7 @@ const HomePage = (props) => {
   )
 };
 
-const mapStateToProps = (state) => {
-  return state;
-}
+const mapStateToProps = (state) => state;
 export default connect(mapStateToProps, {
   onSearchChange,
   fetchGiph,
