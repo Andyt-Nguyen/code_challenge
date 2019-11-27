@@ -40,7 +40,9 @@ export default ({ children, title, isVisible}) => ReactDOM.createPortal(
             background:'#00aeef', 
             textAlign:'center',
             color: 'white',
-            fontWeight: '300'
+            fontWeight: '300',
+            paddingBottom: 20,
+            fontFamily: 'Pacifico'
           }} 
           title={title}
         >

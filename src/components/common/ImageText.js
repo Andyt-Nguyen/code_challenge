@@ -8,7 +8,7 @@ const styles = {
   },
 
   imgContainer: {
-    width: 400, 
+    width: 400,
     textAlign: 'center'
   },
 
@@ -20,7 +20,7 @@ const styles = {
 
 export default ({ title, url, imageStyles, loading }) => (
   loading 
-  ? <Loader type="Puff" color="#00BFFF" height={50} width={50} />
+  ? <div style={styles.imgContainer}><Loader type="Puff" color="#00BFFF" height={240} width={240} /></div>
   : <>
       <h4 style={styles.title}>{title}</h4>
       <div style={styles.imgContainer}>
