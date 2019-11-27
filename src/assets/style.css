@@ -28,6 +28,8 @@ body {
 
 .home_container {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .search_gif_container {
