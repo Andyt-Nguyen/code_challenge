@@ -18,7 +18,7 @@ export default ChildComponent => {
       } else {
         setIsLoading(false);
       }
-    }, []);
+    }, [props.giph.likedGifs, props.history]);
 
     return (
         isLoading
