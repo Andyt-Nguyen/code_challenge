@@ -22,7 +22,7 @@ import {
   Modal,
   Spacer
 } from '../common';
-import { MIN_LIKES } from '../../utils/constants';
+import { MIN_LIKES, MAX_AMOUNT } from '../../utils/constants';
 
 const HomePage = (props) => {
   // Local state
@@ -126,7 +126,7 @@ const HomePage = (props) => {
                 </Button>
               </ColumnCenter>
               <p style={{ color: 'dodgerblue' }}>Weridness Level: {sliderVal}</p>
-              <Slider onChange={onSliderChange} value={sliderVal} />
+              <Slider onChange={onSliderChange} min={0} max={MAX_AMOUNT} value={sliderVal} />
             </Card>
           }
         </aside>

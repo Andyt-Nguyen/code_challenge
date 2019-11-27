@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default ({ onChange, value }) => (
+export default ({ onChange, value, min, max }) => (
   <input
-    min="0"
-    max="10"
+    min={min}
+    max={max}
     type="range"
     style={{ width: '100%' }}
     className="slider"
