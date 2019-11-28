@@ -50,8 +50,7 @@ const HomePage = (props) => {
     await props.fetchGiph(val, props.giph.searchTerm);
   };
 
-  // Adds a gif to the likedGif array (store) in reducer only if 
-  // they have not reached the max likes
+  // Adds a gif to the likedGif array (store)
   const onLike = () => {
     const isUsed = props.giph.likedGifs.find(gif => gif.name === props.giph.searchTerm);
     if (isUsed && Object.values(isUsed).length > 0) {
